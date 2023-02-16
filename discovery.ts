@@ -37,4 +37,5 @@ export async function cleanUpNode(node: Node) {
     const nodeAddress = `${node.processId}/${node.address}`;
     await redis.srem(NODES_SET, nodeAddress);
     await redis.hdel(ROOM_COUNT_KEY, node.processId);
+    await redis.publish(DISCOVERY_CHANNEL, `"clean,${nodeAddress}"`)
 }
