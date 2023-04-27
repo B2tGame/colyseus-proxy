@@ -107,6 +107,8 @@ listen((action: Action, node: Node) => {
 
   } else if (action == 'remove') {
     unregister(node);
+  } else if (action == 'testing') {
+    cleanUpNode(node);
   }
 })
 
